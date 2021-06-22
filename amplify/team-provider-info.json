@@ -1,0 +1,29 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-erpweb-dev-173448-authRole",
+      "UnauthRoleArn": "arn:aws:iam::132218014746:role/amplify-erpweb-dev-173448-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::132218014746:role/amplify-erpweb-dev-173448-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-erpweb-dev-173448-deployment",
+      "UnauthRoleName": "amplify-erpweb-dev-173448-unauthRole",
+      "StackName": "amplify-erpweb-dev-173448",
+      "StackId": "arn:aws:cloudformation:us-east-2:132218014746:stack/amplify-erpweb-dev-173448/65aba370-d36f-11eb-a7f8-02e6541cad36",
+      "AmplifyAppId": "d4ozk5p3ul2mq"
+    },
+    "categories": {
+      "function": {
+        "erpweb741e0f4fCustomMessage": {
+          "REDIRECTURL": "http://localhost:3000/auth/callback",
+          "EMAILSUBJECT": "O seu link de verificação",
+          "EMAILMESSAGE": "Clique no link abaixo para verificar o seu endereço de e-mail.",
+          "deploymentBucketName": "amplify-erpweb-dev-173448-deployment",
+          "s3Key": "amplify-builds/erpweb741e0f4fCustomMessage-3669315a7565634b6f77-build.zip"
+        }
+      },
+      "auth": {
+        "erpweb741e0f4f": {}
+      }
+    }
+  }
+}
