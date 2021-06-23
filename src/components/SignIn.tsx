@@ -1,0 +1,43 @@
+import Input from './Input'
+import SocialSignIn from './SocialSignIn'
+
+function SignIn({
+  setUiState, onChange, signIn
+}) {
+  return (
+    <>
+      <p className="text-3xl font-black">Sign in to your account</p>
+      <div className="mt-10">
+        <label className="text-sm"></label>
+        <Input onChange={onChange} name="email" placeholder="Email or phone number" />
+      </div>
+      <div className="mt-7">
+        <label className="text-sm"></label>
+        <Input type="password" name="password" onChange={onChange} placeholder="Password" />
+      </div>
+      <button onClick={signIn} className="text-white w-full mt-6 bg-pink-600 p-3 rounded">
+        Continue
+      </button>
+
+      <a>
+        <span
+          onClick={() => setUiState('forgotPassword')}
+          className="ml-8 mt-6 sm:ml-38 text-pink-500"
+        >
+          Forgot your password?
+        </span>
+      </a>
+
+      <SocialSignIn />
+      <p className="mt-12 text-sm font-light">
+      Don't have an account?
+        <span
+          onClick={() => setUiState('signUp')}
+          role="button"
+          className="cursor-pointer text-pink-600"> Sign Up.</span>
+    </p>
+    </> 
+  )
+}
+
+export default SignIn
