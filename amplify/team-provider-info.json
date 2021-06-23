@@ -1,28 +1,19 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-erpweb-dev-173448-authRole",
-      "UnauthRoleArn": "arn:aws:iam::132218014746:role/amplify-erpweb-dev-173448-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::132218014746:role/amplify-erpweb-dev-173448-authRole",
+      "AuthRoleName": "amplify-webnext-dev-151320-authRole",
+      "UnauthRoleArn": "arn:aws:iam::132218014746:role/amplify-webnext-dev-151320-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::132218014746:role/amplify-webnext-dev-151320-authRole",
       "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-erpweb-dev-173448-deployment",
-      "UnauthRoleName": "amplify-erpweb-dev-173448-unauthRole",
-      "StackName": "amplify-erpweb-dev-173448",
-      "StackId": "arn:aws:cloudformation:us-east-2:132218014746:stack/amplify-erpweb-dev-173448/65aba370-d36f-11eb-a7f8-02e6541cad36",
-      "AmplifyAppId": "d4ozk5p3ul2mq"
+      "DeploymentBucketName": "amplify-webnext-dev-151320-deployment",
+      "UnauthRoleName": "amplify-webnext-dev-151320-unauthRole",
+      "StackName": "amplify-webnext-dev-151320",
+      "StackId": "arn:aws:cloudformation:us-east-2:132218014746:stack/amplify-webnext-dev-151320/ce799dc0-d424-11eb-8655-0a196f208d44",
+      "AmplifyAppId": "ddu8tcpg7aa8"
     },
     "categories": {
-      "function": {
-        "erpweb741e0f4fCustomMessage": {
-          "REDIRECTURL": "http://localhost:3000/auth/callback",
-          "EMAILSUBJECT": "O seu link de verificação",
-          "EMAILMESSAGE": "Clique no link abaixo para verificar o seu endereço de e-mail.",
-          "deploymentBucketName": "amplify-erpweb-dev-173448-deployment",
-          "s3Key": "amplify-builds/erpweb741e0f4fCustomMessage-3669315a7565634b6f77-build.zip"
-        }
-      },
       "auth": {
-        "erpweb741e0f4f": {}
+        "webnext60283227": {}
       }
     }
   }

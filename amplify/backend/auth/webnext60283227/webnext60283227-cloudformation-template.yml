@@ -9,18 +9,6 @@ Parameters:
     Type: String
 
   
-  
-  
-  functionerpweb741e0f4fCustomMessageArn:
-    Type: String
-    Default: functionerpweb741e0f4fCustomMessageArn
-  
-  functionerpweb741e0f4fCustomMessageName:
-    Type: String
-    Default: functionerpweb741e0f4fCustomMessageName
-  
-  
-  
 
     
   identityPoolName:
@@ -166,10 +154,6 @@ Parameters:
     Type: String
   
             
-  verificationBucketName:
-    Type: String
-  
-            
   
   usernameCaseSensitive:
     Type: String
@@ -178,10 +162,6 @@ Parameters:
   parentStack:
     Type: String
         
-  authTriggerConnections:
-    Type: String
-  
-            
   
   breakCircularDependency:
     Type: String
@@ -202,34 +182,13 @@ Conditions:
 
 Resources:
   
-  CustomMessageConfirmationBucket:
-    Type: AWS::S3::Bucket
-    DeletionPolicy: "Retain"
-    Properties:
-      BucketName:  !If [ShouldNotCreateEnvResources, !Ref verificationBucketName, !Join ['',[!Ref verificationBucketName, '-', !Ref env]]]
-      AccessControl: "Private"
-      WebsiteConfiguration:
-        IndexDocument: "index.html"
-        ErrorDocument: "index.html"
-      CorsConfiguration:
-        CorsRules:
-          -
-            AllowedHeaders:
-              - "Authorization"
-              - "Content-Length"
-            AllowedMethods:
-              - "GET"
-            AllowedOrigins:
-              - "*"
-            MaxAge: 3000
-  
   
   # BEGIN SNS ROLE RESOURCE
   SNSRole:
   # Created to allow the UserPool SMS Config to publish via the Simple Notification Service during MFA Process
     Type: AWS::IAM::Role
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, 'erpweb741e0f4f_sns-role', !Join ['',[ 'sns', '741e0f4f', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, 'webnex60283227_sns-role', !Join ['',[ 'sns', '60283227', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
@@ -241,10 +200,10 @@ Resources:
               - "sts:AssumeRole"
             Condition:
               StringEquals:
-                sts:ExternalId: erpweb741e0f4f_role_external_id
+                sts:ExternalId: webnex60283227_role_external_id
       Policies:
         -
-          PolicyName: erpweb741e0f4f-sns-policy
+          PolicyName: webnex60283227-sns-policy
           PolicyDocument:
             Version: "2012-10-17"
             Statement:
@@ -302,7 +261,7 @@ Resources:
       SmsAuthenticationMessage: !Ref smsAuthenticationMessage
       SmsConfiguration:
         SnsCallerArn: !GetAtt SNSRole.Arn
-        ExternalId: erpweb741e0f4f_role_external_id
+        ExternalId: webnex60283227_role_external_id
     
   
   UserPoolClientWeb:
@@ -310,7 +269,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: erpweb741e0f4f_app_clientWeb
+      ClientName: webnex60283227_app_clientWeb
       
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
       UserPoolId: !Ref UserPool
@@ -320,7 +279,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: erpweb741e0f4f_app_client
+      ClientName: webnex60283227_app_client
       
       GenerateSecret: !Ref userpoolClientGenerateSecret
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
@@ -331,7 +290,7 @@ Resources:
   # Created to execute Lambda which gets userpool app client config values
     Type: 'AWS::IAM::Role'
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', '741e0f4f', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', '60283227', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -385,7 +344,7 @@ Resources:
   # Marked as depending on UserPoolClientRole for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: erpweb741e0f4f_userpoolclient_lambda_iam_policy
+      PolicyName: webnex60283227_userpoolclient_lambda_iam_policy
       Roles:
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -402,7 +361,7 @@ Resources:
   # Marked as depending on UserPoolClientLambdaPolicy for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: erpweb741e0f4f_userpoolclient_lambda_log_policy
+      PolicyName: webnex60283227_userpoolclient_lambda_log_policy
       Roles:
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -792,7 +751,7 @@ Resources:
   # Always created
     Type: AWS::Cognito::IdentityPool
     Properties:
-      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'erpweb741e0f4f_identitypool_741e0f4f', !Join ['',['erpweb741e0f4f_identitypool_741e0f4f', '__', !Ref env]]]
+      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'webnext60283227_identitypool_60283227', !Join ['',['webnext60283227_identitypool_60283227', '__', !Ref env]]]
       
       CognitoIdentityProviders:
         - ClientId:  !Ref UserPoolClient

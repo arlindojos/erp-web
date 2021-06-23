@@ -3,7 +3,7 @@ import { User } from 'ogolfim';
 import useLocalStorage from '../hooks/useLocalStorage';
 
 type Data = {
-  user?: User
+  user: User | null
 }
 
 interface Props {

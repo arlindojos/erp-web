@@ -1,23 +1,35 @@
 import Link from 'next/link'
-import { useContext } from "react"
-import { DataContext } from "../Contexts"
+import { Auth } from 'aws-amplify'
+import { useEffect } from "react"
+import { useState } from 'react'
 
 const Home: React.FC = () => {
-  // const { data } = useContext(DataContext)
+  const [ user, setUser ] = useState(null)
 
-  // if(!data) {
-  //   return <Link href="/login">Login</Link>
-  // }
-
-  // const { user } = data
-
-  // if(!user) {
-  //   return <Link href="/login">Login</Link>
-  // }
+  useEffect(() => {
+    Auth.currentAuthenticatedUser()
+    .then(usr => {
+      console.log(usr.attributes);
+      
+      setUser(usr.attributes) 
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }, [])
+  
+  if(!user) {
+    return <Link href="/profile">Login</Link>
+  }
   
   return (
     <div>
-    Welcome <Link href="/logout">Logout</Link>
+        <a onClick={() => Auth.signOut()}>Logout</a>
+        <br /><br />
+        <span>
+          Welcome 
+          {user.attributes.name}
+        </span>
     </div>
   )
 }

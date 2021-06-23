@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "erpweb741e0f4f_identitypool_741e0f4f",
+    "identityPoolName": "webnext60283227_identitypool_60283227",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "erpweb741e0f4f",
-    "userPoolName": "erpweb741e0f4f_userpool_741e0f4f",
+    "resourceNameTruncated": "webnex60283227",
+    "userPoolName": "webnext60283227_userpool_60283227",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -29,10 +29,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "erpweb741e0f4f_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "webnex60283227_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "741e0f4f",
-    "resourceName": "erpweb741e0f4f",
+    "sharedId": "60283227",
+    "resourceName": "webnext60283227",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -49,35 +49,23 @@
     "useDefault": "defaultSocial",
     "hostedUI": true,
     "usernameAttributes": [
-        "email"
+        "email, phone_number"
     ],
-    "triggers": "{\n  \"CustomMessage\": [\n    \"verification-link\"\n  ]\n}",
-    "hostedUIDomainName": "ogolfim-erp",
+    "triggers": "{}",
+    "hostedUIDomainName": "ogolfim",
     "authProvidersUserPool": [
         "Facebook",
         "Google"
     ],
     "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"email,public_profile\",\"AttributeMapping\":{\"email\":\"email\",\"name\":\"name\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"name\":\"name\",\"username\":\"sub\"}}]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/auth/callback/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/\"],\"LogoutURLs\":[\"http://localhost:3000/\"]}",
     "userPoolGroupList": [],
     "serviceName": "Cognito",
-    "verificationBucketName": "erpweb741e0f4fverificationbucket",
     "usernameCaseSensitive": false,
     "parentStack": {
         "Ref": "AWS::StackId"
     },
-    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"CustomMessage\",\n    \"lambdaFunctionName\": \"erpweb741e0f4fCustomMessage\"\n  }\n]",
     "breakCircularDependency": true,
     "permissions": [],
-    "dependsOn": [
-        {
-            "category": "function",
-            "resourceName": "erpweb741e0f4fCustomMessage",
-            "triggerProvider": "Cognito",
-            "attributes": [
-                "Arn",
-                "Name"
-            ]
-        }
-    ]
+    "dependsOn": []
 }

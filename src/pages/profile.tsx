@@ -1,29 +1,19 @@
 import { Auth } from 'aws-amplify'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
-import { useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { DataContext } from "../Contexts"
 
-interface formData {
-  family_name: string
-  given_name: string
+interface FormState {
   email: string
-  phone_number: string
   password: string
+  authCode: string
 }
 
-
 const Profile: React.FC = () => {
-  useEffect(() => {
-    checkUser()
+  const [ formState, setFormState ] = useState()
+  const { data, setData } = useContext(DataContext)
 
-    async function checkUser() {
-      const user = Auth.currentAuthenticatedUser()
-
-      console.log(user)
-      
-    } 
-  })
-
-  const formSubmit = (form: formData) => {
+  const formSubmit = (form: FormState) => {
     
   }
 
@@ -41,9 +31,7 @@ const Profile: React.FC = () => {
         initialValues={{
           email: '', 
           password: '',
-          family_name: '',
-          given_name: '',
-          phone_number: ''
+          authCode: '' 
         }}
         onSubmit={(values) => {
           formSubmit(values)
